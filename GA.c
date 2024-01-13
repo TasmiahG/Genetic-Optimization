@@ -7,6 +7,7 @@
 //#include "functions.c"
 //#include "OF.c"
 
+
 int main(int argc, char *argv[])
 {
     // <YOUR CODE: Handle the possible errors in input data given by the user and say how to execute the code>
