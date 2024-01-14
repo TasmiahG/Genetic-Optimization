@@ -17,16 +17,6 @@ double generate_random(double min, double max)
     return scaled_random;
 }
 
-unsigned int generate_int()
-{
-    // implement the function to return a random integer value
-
-    // Generate a random unsigned integer value
-    unsigned int random_value = rand();
-
-    return random_value;
-}
-
 // Function to initialize a random population
 void generate_population(int POPULATION_SIZE, int NUM_VARIABLES, double population[POPULATION_SIZE][NUM_VARIABLES], double Lbound[NUM_VARIABLES], double Ubound[NUM_VARIABLES])
 {
