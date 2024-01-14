@@ -9,13 +9,13 @@
 
 int main(int argc, char *argv[])
 {
-    // <YOUR CODE: Handle the possible errors in input data given by the user and say how to execute the code>
+    // Handle the possible errors in input data given by the user and say how to execute the code
     if (argc != 6) {
         printf("Usage: ./GA <POPULATION SIZE> <MAX GENERATIONS> <crossover rate> <mutate rate> <stop criteria>\n");
         return 1;
     }
 
-    // <YOUR CODE: Assign all inputs given by the user argv[i]> like
+    // Assign all inputs given by the user argv[i] like
     // POPULATION_SIZE, MAX_GENERATIONS, crossover_rate, mutate_rate, stop_criteria
     int POPULATION_SIZE = atoi(argv[1]);
     int MAX_GENERATIONS = atoi(argv[2]);
@@ -24,7 +24,6 @@ int main(int argc, char *argv[])
     double stop_criteria = atof(argv[5]);
 
     // ###################################################################################
-    // you dont need to change anything here
     // the number of variables
     int NUM_VARIABLES = 2;
     // the lower bounds of variables
@@ -34,7 +33,7 @@ int main(int argc, char *argv[])
     // ###################################################################################
 
 
-    // <YOUR CODE: Here make all the initial print outs>
+    // Here make all the initial print outs
     printf("Genetic Algorithm is initiated.\n");
     printf("------------------------------------------------\n");
     printf("The number of variables: %d\n", NUM_VARIABLES);
@@ -53,7 +52,7 @@ int main(int argc, char *argv[])
     double cpu_time_used;
     start_time = clock();
 
-    // <YOUR CODE: Declare all the arrays you need here>
+    // Declare all the arrays you need here
     double population[POPULATION_SIZE][NUM_VARIABLES];
     double fitness[POPULATION_SIZE];
     double new_population[POPULATION_SIZE][NUM_VARIABLES];
@@ -66,7 +65,7 @@ int main(int argc, char *argv[])
 
     srand((unsigned)time(NULL)); // Seed random number generator once
 
-    // <YOUR CODE: Call generate_population function to initialize the "population"> like:
+    // Call generate_population function to initialize the "population" like:
     // generate_population(POPULATION_SIZE, NUM_VARIABLES, population, Lbound, Ubound);
     generate_population(POPULATION_SIZE, NUM_VARIABLES, population, Lbound, Ubound);
 
@@ -74,13 +73,13 @@ int main(int argc, char *argv[])
     // Or stopping criteria is met
     for (int generation = 0; generation < MAX_GENERATIONS; generation++)
     {
-        // <YOUR CODE: Compute the fitness values using objective function for
-        // each row in "population" (each set of variables)> like:
+        // Compute the fitness values using objective function for
+        // each row in "population" (each set of variables) like:
         // compute_objective_function(POPULATION_SIZE, NUM_VARIABLES, population, fitness);
         compute_objective_function(POPULATION_SIZE, NUM_VARIABLES, population, fitness);
 
-        // <YOUR CODE: Here implement the logic of finding best solution with minimum fitness value
-        // and the stopping criteria>
+        // Here implement the logic of finding best solution with minimum fitness value
+        // and the stopping criteria
         for (int i = 0; i < POPULATION_SIZE; i++) 
         {
             if (fitness[i] < best_fitness)  
@@ -97,26 +96,25 @@ int main(int argc, char *argv[])
             printf("Stopping criteria met");
             break;
         }
-        // <YOUR CODE: Here call the crossover function>
+        // Here call the crossover function
         crossover(POPULATION_SIZE, NUM_VARIABLES, fitness, new_population, population, crossover_rate);
 
-        // <YOUR CODE: Here call the mutation function>
+        // Here call the mutation function
         mutate(POPULATION_SIZE, NUM_VARIABLES, new_population, population, Lbound, Ubound, mutate_rate);
 
         // Now you have the a new population, and it goes to the beginning of loop to re-compute all again
     }
 
-    // <YOUR CODE: Jump to this part of code if the stopping criteria is met before MAX_GENERATIONS is met>
+    // Jump to this part of code if the stopping criteria is met before MAX_GENERATIONS is met
 
     // ###################################################################################
-    // You dont need to change anything here
     // Here we print the CPU time taken for your code
     end_time = clock();
     cpu_time_used = ((double)(end_time - start_time)) / CLOCKS_PER_SEC;
     printf("CPU time: %f seconds\n", cpu_time_used);
     // ###################################################################################
 
-    // <Here print out the best solution and objective function value for the best solution like the format>
+    // Here print out the best solution and objective function value for the best solution like the format
     printf("Best solution found: (");
     for (int j = 0; j < NUM_VARIABLES; j++) {
         printf("%.20lf", best_solution[j]);
