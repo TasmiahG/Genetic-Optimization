@@ -1,7 +1,7 @@
 # Compiler and flags
 CC = gcc
 CFLAGS = -Wall -O2
-LDFLAGS = -lm -lrt
+LDFLAGS = -lm
 
 # Executable name
 TARGET = GA
